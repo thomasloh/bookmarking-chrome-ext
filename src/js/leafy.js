@@ -10,7 +10,8 @@
 (function(root) {
 
   // Constants
-  var HOST = 'http://localhost:8005';
+  // var HOST = 'http://localhost:8005';
+  var HOST = 'http://useleafy.com';
   var API_PREFIX = '/api/v1';
 
   // ------------------------------------------------------------------------

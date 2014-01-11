@@ -10,7 +10,8 @@ var state   = {};
 function grab_cookie() {
   var p = new $.Deferred();
   chrome.cookies.get({
-    url: 'http://localhost',
+    // url: 'http://localhost',
+    url: 'http://useleafy.com',
     name: 'connect.sid'
   }, function(cookie) {
     if (cookie) {
@@ -66,6 +67,9 @@ function save_bookmark(bookmark) {
 
 // Failed to save bookmark
 function failed_to_save_bookmark(e) {
+  if (!e) {
+    return;
+  }
   if ("authenticated" in e && !e.authenticated) {
     return;
   }
@@ -143,18 +147,18 @@ function finish() {
 function prompt_login() {
   console.log('Prompt log in')
   chrome.tabs.executeScript({
-    code: 'var child = window.open("http://localhost:8005/login", "leafy_sign_in", "height=600,width=600,top=500,left=500");window.addEventListener("message", function(event) {console.log(event.origin);console.log(event.data);if (event.origin === "http://localhost:8005" && event.data === "#/home") {chrome.runtime.sendMessage({authenticated: true}); clearInterval(timer); child.close();} else {detect();}}, false);function detect() {window.open("", "leafy_sign_in");child.postMessage("location_hash", "http://localhost:8005")};var timer = setInterval(function() {detect()}, 10)'
+    code: 'var child = window.open("http://useleafy.com/login", "leafy_sign_in", "height=600,width=600,top=500,left=500");window.addEventListener("message", function(event) {console.log(event.origin);console.log(event.data);if (event.origin === "http://useleafy.com" && event.data === "#/home") {chrome.runtime.sendMessage({authenticated: true}); clearInterval(timer); child.close();} else {detect();}}, false);function detect() {window.open("", "leafy_sign_in");child.postMessage("location_hash", "http://useleafy.com")};var timer = setInterval(function() {detect()}, 10)'
   });
 
   chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
     // Logged in!
     if (request.authenticated) {
-      debugger;
-      if (!!state.proceeding) {
-        return;
-      }
-      state.proceeding = true;
+      // debugger;
+      // if (!!state.proceeding) {
+      //   return;
+      // }
+      // state.proceeding = true;
       proceed();
     } else {
       console.log('User not authenticated');

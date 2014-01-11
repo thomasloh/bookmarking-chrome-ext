@@ -1,13 +1,12 @@
 {
   "name": "leafy",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "manifest_version": 2,
   "description": "Bookmarker",
-  "homepage_url": "http://extensionizr.com",
   "icons": {
-    "16": "icons/icon16.png",
-    "48": "icons/icon48.png",
-    "128": "icons/icon128.png"
+    "16": "icons/leafy16.png",
+    "48": "icons/leafy48.png",
+    "128": "icons/leafy128.png"
   },
   "default_locale": "en",
   "background": {
@@ -21,16 +20,16 @@
     ],
     "persistent": false
   },
-  "options_page": "src/html/options.html",
   "permissions": [
     "activeTab",
     "tabs",
     "cookies",
     "contextMenus",
-    "http://localhost/*"
+    "http://localhost/*",
+    "http://useleafy.com/*"
   ],
   "browser_action": {
-    "default_icon": "icons/icon19.png",
+    "default_icon": "icons/leafy19.png",
     "default_title": "Save to Leafy"
   }
 }
